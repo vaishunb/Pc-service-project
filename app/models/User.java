@@ -10,39 +10,36 @@ public class User extends Model{
 	
 	
 	@Id
-	private String username;
-	private String name;	
-	private String password;
+	public String email;
+	public String name;	
+	public String password;
+	
+	//Adress
+	public String zip;
+	public String city;
+	public String street;
+	public String appartment;
 	
 	
-	public User(String name, String username, String password){
+	public User(String name, String email, String password, String zip, String city, String street, String appartment){
 		this.name = name;
-		this.username = username;
+		this.email = email;
 		this.password = password;
+		
+		this.zip = zip;
+		this.city = city;
+		this.street = street;
+		this.appartment = appartment;
+		this.save();
 	}
+	
+	public static Finder<String,User> find = new Finder<String,User>(
+	        String.class, User.class
+	    ); 
+	
 	
 	public String toString(){
-		return "Name = "+name+" Login = "+username+" Password = "+password;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
+		return "Name = "+name+" Login = "+email+" Password = "+password;
 	}
 
 }
